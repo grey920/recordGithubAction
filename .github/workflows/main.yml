@@ -10,6 +10,7 @@ jobs:
       with:
         # 개인 토큰을 사용할 것인지 말 것인지
         persist-credentials: false 
+        fetch-depth: 0
     - name: 1. pip 업그래이드
       run: python -m pip install --upgrade pip
     - name: 2. 환경 설정
@@ -20,7 +21,6 @@ jobs:
       run: |
         git config --local user.email "charminggw@gmail.com"
         git config --local user.name "grey920"
-        git config --local --unset-all "http.https://github.com/.extraheader"
         git add .
         git commit -m "Run crawler and update current data"
     - name: Push changes
