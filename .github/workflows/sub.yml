@@ -6,14 +6,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: 1. 변수출력
-      env:
-        NAME: 'gyuwoon.jung' 
-        AGE: 30
-        HUMAN: true
-        ID: ${{ github.actor }}
-      run: |
-        echo "내 이름은 $NAME 입니다."
-        echo "내 이름은 $NAME, 내 아이디는 $ID 입니다."
-        echo "내 이름은 $NAME, 내 아이디는 $ID 입니다. 제 나이는 $AGE이고, 휴먼: $HUMAN 입니다."
+      - name: Dump GitHub context
+        run: echo '${{ toJSON(github) }}'
+      - name: Dump job context
+        run: echo '${{ toJSON(job) }}'
+      - name: Dump steps context
+        run: echo '${{ toJSON(steps) }}'
+      - name: Dump runner context
+        run: echo '${{ toJSON(runner) }}'
+      - name: Dump strategy context
+        run: echo '${{ toJSON(strategy) }}'
+      - name: Dump matrix context
+        run: echo '${{ toJSON(matrix) }}'
