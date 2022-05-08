@@ -26,5 +26,8 @@ jobs:
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
+         # 개인 토큰을 사용할 것인지 말 것인지
+        persist-credentials: false 
+        fetch-depth: 0
         # branch: "master"
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        #github_token: ${{ secrets.GITHUB_TOKEN }}
