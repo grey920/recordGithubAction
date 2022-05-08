@@ -1,4 +1,4 @@
-dddname: helloGithubAction
+name: helloGithubAction
 
 on: [push]
 
