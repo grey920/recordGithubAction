@@ -3,9 +3,7 @@ name: helloGithubAction
 
 # push 했을 때 jobs에 있는 이벤트를 실행할 것이다.
 # [push, pull_request] 등과 같이 다중 이벤트 처리 가능 (어떤 이벤트가 있는지는 공식문서 참고)
-on:
-  schedule:
-    - cron: "*/10 * * * *" # 10분마다 실행
+on: [push]
 
 # 위 이벤트가 일어났을 경우 실행될 job, 여러개 설정 가능.
 jobs:
@@ -21,15 +19,24 @@ jobs:
       # 즉, actions/checkout@v2를 사용하지 않으면 아무것도 없는 OS에서 test.py를 실행하려 하므로 에러가 발생한다. 
       # 이 uses를 해야 내가 작성한 소스코드가 OS 안으로 들어가게 된다.
     - uses: actions/checkout@v2
-    - name: 1. 파일 목록 출력
-      run: ls -al
-    - name: 2. 파이썬 패키지 확인
-      run: pip list
-    - name: 3. pip 업그레이드
+      with:
+        # 개인 토큰을 사용할 것인지 말 것인지
+        persist-credentials: false 
+    - name: 1. pip 업그레이드
       run: python -m pip install --upgrade pip
-    - name: 4. 필요한 패키지 인스톨
+    - name: 2. 필요한 패키지 인스톨
       run: pip install -r requirements.txt
-    - name: 5. 파이썬 실행!!
+    - name: 3. 파이썬 실행!!
       run: python test.py
-    
+    - name: Commit files
+      run: | # 파이프를 사용하면 여러가지 명령어를 같이 쓸 수 있음.
+        git config --local user.email "paullabkorea@gmail.com"
+        git config --local user.name "paullabkorea"
+        git add .
+        git commit -m "Run crawler and update current data"
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        # branch: "master" # 이 라인을 활성화하면 해당 브랜치를 생성한다.
+        github_token: ${{ secrets.GITHUB_TOKEN }}
       
