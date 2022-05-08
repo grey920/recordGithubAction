@@ -3,7 +3,9 @@ name: helloGithubAction
 
 # push 했을 때 jobs에 있는 이벤트를 실행할 것이다.
 # [push, pull_request] 등과 같이 다중 이벤트 처리 가능 (어떤 이벤트가 있는지는 공식문서 참고)
-on: [push]
+on:
+  schedule:
+    - cron: "*/10 * * * *" # 10분마다 실행
 
 # 위 이벤트가 일어났을 경우 실행될 job, 여러개 설정 가능.
 jobs:
