@@ -18,7 +18,7 @@ jobs:
       # actions/checkout : 아무것도 없는 OS에서 자동으로 우리의 코드를 클론하고 다운받아 실행하게 해주는 소스코드
       # 즉, actions/checkout@v2를 사용하지 않으면 아무것도 없는 OS에서 test.py를 실행하려 하므로 에러가 발생한다. 
       # 이 uses를 해야 내가 작성한 소스코드가 OS 안으로 들어가게 된다.
-    #- uses: actions/checkout@v2
+    - uses: actions/checkout@v2
     - name: 1. 파일 목록 출력
       run: ls -al
     # name: OS에서 실행할 이름
