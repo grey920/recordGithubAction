@@ -1762,3 +1762,7 @@ pytest-venv/lib/python3.10/site-packages/tomli/__pycache__/_parser.cpython-310.p
 pytest-venv/lib/python3.10/site-packages/tomli/__pycache__/_re.cpython-310.pyc
 pytest-venv/lib/python3.10/site-packages/tomli/__pycache__/_types.cpython-310.pyc
 pytest/__pycache__/calculator.cpython-310-pytest-7.1.2.pyc
+pytest/calculator/__pycache__/__init__.cpython-310.pyc
+pytest/calculator/__pycache__/calculator.cpython-310.pyc
+pytest/tests/__pycache__/__init__.cpython-310.pyc
+pytest/tests/__pycache__/test_calculator.cpython-310-pytest-7.1.2.pyc
